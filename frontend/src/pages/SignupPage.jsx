@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuthStore } from "../store/useAuthStore";
 import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -15,6 +15,10 @@ const SignUpPage = () => {
   });
 
   const { signup, isSigningUp } = useAuthStore();
+
+  useEffect(() => {
+    console.log("In signin page ");
+  })
 
   const validateForm = () => {
     if (!formData.fullName.trim()) return toast.error("Full name is required");
@@ -55,7 +59,7 @@ const SignUpPage = () => {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="form-control">
-              <label className="label">
+              <label className="label py-2">
                 <span className="label-text font-medium">Full Name</span>
               </label>
               <div className="relative">
@@ -73,7 +77,7 @@ const SignUpPage = () => {
             </div>
 
             <div className="form-control">
-              <label className="label">
+              <label className="label py-2">
                 <span className="label-text font-medium">Email</span>
               </label>
               <div className="relative">
@@ -91,7 +95,7 @@ const SignUpPage = () => {
             </div>
 
             <div className="form-control">
-              <label className="label">
+              <label className="label py-2">
                 <span className="label-text font-medium">Password</span>
               </label>
               <div className="relative">
@@ -100,14 +104,14 @@ const SignUpPage = () => {
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
-                  className={`input input-bordered w-full pl-10`}
+                  className={`input input-bordered w-full pl-10 pr-10`}
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center z-10"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
