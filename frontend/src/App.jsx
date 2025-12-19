@@ -16,15 +16,20 @@ import { Toaster } from 'react-hot-toast'
 const App = () => {
 
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
-
   const { theme } = useThemeStore();
-
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
 
-  console.log({ authUser, isCheckingAuth });
+  // sync selected theme to document for DaisyUI
+  useEffect(() => {
+    if (theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+  }, [theme]);
+
+  // console.log({ authUser, isCheckingAuth });
 
   // Show loading only while checking auth status
   if (isCheckingAuth) {
@@ -38,7 +43,7 @@ const App = () => {
 
   return (
     <>
-      <div data-theme={theme}>
+      <div>
         <Navbar />
         <Routes>
           <Route path='/' element={authUser ? <HomePage /> : <Navigate to='/login' />} />
