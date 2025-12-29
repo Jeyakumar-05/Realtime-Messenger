@@ -42,7 +42,8 @@ const SettingsPage = () => {
                 </div>
               </div>
               <span className="text-[11px] font-medium truncate w-full text-center">
-                {t.charAt(0).toUpperCase() + t.slice(1)}
+
+                {t == 'dark' ? 'Default' : t.charAt(0).toUpperCase() + t.slice(1)}
               </span>
             </button>
           ))}
