@@ -23,12 +23,4 @@ export const THEMES = [
   "cmyk",
   "autumn",
   "business",
-  "acid",
-  "lemonade",
-  "night",
-  "coffee",
-  "winter",
-  "dim",
-  "nord",
-  "sunset",
 ];
